@@ -16,6 +16,8 @@ out:
 \end{matrix}
 ```
 
+You can now `ctrl+V` this wherever is needed.
+
 ## Options
 
 ### matrix
