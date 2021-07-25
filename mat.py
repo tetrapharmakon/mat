@@ -13,10 +13,12 @@ def intersperse(iterable, delimiter):
 
 def plit(matrix):
   pre = sys.argv[1]
-  beg = "\\begin{" + pre + "matrix}\n"
-  end = "\n\\end{" + pre + "matrix}\n"
-  splat = list(map(lambda x: x.split(","), matrix.split(";")))
-  body = "".join(intersperse(map(lambda x : "".join(list(intersperse(x, "\t&\t"))), splat), " \\\\ \n"))
+  # catches argv[1] containing the specific matrix env
+  beg = "\\left(\\begin{smallmatrix}\n" if pre == "small" else "\\begin{" + pre + "matrix}\n"
+  end = "\n\\end{smallmatrix}\\right)\n" if pre == "small" else "\n\\end{" + pre + "matrix}\n"
+  # `smallmatrix` needs brackets around the env
+  entries = list(map(lambda x: x.split(","), matrix.split(";")))
+  body = "".join(intersperse(map(lambda x : "".join(list(intersperse(x, "\t&\t"))), entries), " \\\\ \n"))
   splet = beg + body + end
   return splet
 
