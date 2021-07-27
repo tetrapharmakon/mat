@@ -1,9 +1,5 @@
 import sys, pyperclip
 
-# ØpbBvV
-# def admissible(s):
-#   return s in ["small", "p", "b", "B", "v", "V", ""]
-
 def intersperse(iterable, delimiter):
   it = iter(iterable)
   yield next(it)
