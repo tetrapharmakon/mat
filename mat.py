@@ -41,6 +41,7 @@ def matter(matrix):
     beg = "Do "
     body = "you "
     end = "think this is a joke, bub?"
+    # too tired to think
   tex_matrix = beg + body + end
   return tex_matrix
 
