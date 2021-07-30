@@ -37,7 +37,7 @@ def matter(matrix):
     beg = "\\xymatrix{\n"
     end = "\n}"
   else:
-    raise ValueError("You provided a non admissible value for argv[1]")
+    raise ValueError("You provided a non admissible value for sys.argv[1]")
   tex_matrix = beg + body + end
   return tex_matrix
 
