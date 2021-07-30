@@ -26,11 +26,10 @@ def matter(matrix):
     beg = "\\left(\\begin{smallmatrix}\n" if pre == "s" else "\\begin{" + pre + "matrix}\n"
     end = "\n\\end{smallmatrix}\\right)\n" if pre == "s" else "\n\\end{" + pre + "matrix}\n"
     # `smallmatrix` needs brackets around the env
-    tex_matrix = beg + body + end
-    return tex_matrix
   elif pre[0] == "t": # is_tabular(pre)
     row = len(entries[0])
     beg = "\\begin{tabular}{" + row * pre[1] + "}\n"
+    # you need as many (l|c|r) as there are columns
     end = "\n\\end{tabular}\n"
     tex_matrix = beg + body + end
     return tex_matrix
@@ -38,10 +37,7 @@ def matter(matrix):
     beg = "\\xymatrix{\n"
     end = "\n}"
   else:
-    beg = "Do "
-    body = "you "
-    end = "think this is a joke, bub?"
-    # too tired to think
+    raise ValueError("You provided a non admissible value for argv[1]")
   tex_matrix = beg + body + end
   return tex_matrix
 
