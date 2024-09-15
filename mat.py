@@ -2,6 +2,7 @@
 
 import argparse
 import pyperclip
+import subprocess
 
 parser = argparse.ArgumentParser(
     description='mat is a minimal python script to paste a LaTeX matrix on your clipboard.')
@@ -71,3 +72,9 @@ if args.verbose > 0:
     print(formatted)
 
 pyperclip.copy(formatted)
+print(pyperclip.paste())
+
+# Use subprocess to pipe the formatted text into xclip
+process = subprocess.Popen(['xclip', '-selection', 'clipboard'], stdin=subprocess.PIPE)
+process.communicate(input=formatted.encode('utf-8'))  # Encode to bytes for subprocess
+
